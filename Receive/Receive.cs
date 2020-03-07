@@ -15,13 +15,7 @@ namespace Receive
             {
                 using (var channel = connection.CreateModel()) 
                 {
-                    channel.QueueDeclare(
-                        queue: "hello",
-                        durable: false,
-                        exclusive: false,
-                        autoDelete: false,
-                        arguments: null
-                    );
+                    channel.QueueDeclare(queue: "hello", durable: false, exclusive: false, autoDelete: false, arguments: null);
 
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (model, ea) => 
@@ -31,11 +25,7 @@ namespace Receive
                         Console.WriteLine(" [x] Received {0}", message);
                     };
                     
-                    channel.BasicConsume(
-                        queue: "hello", 
-                        autoAck: true, 
-                        consumer: consumer
-                    );
+                    channel.BasicConsume(queue: "hello", autoAck: true, consumer: consumer);
 
                     Console.WriteLine(" Press [enter] to exit.");
                     Console.ReadLine();
