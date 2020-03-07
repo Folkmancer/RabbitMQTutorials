@@ -24,7 +24,7 @@ namespace NewTask
                     
                     channel.BasicPublish(exchange: "", routingKey: "task_queue", basicProperties: properties, body: body);
                     
-                    Console.WriteLine(" [x] Send {0}", message);
+                    Console.WriteLine(" [x] Sent {0}", message);
                 }
 
                 Console.WriteLine(" Press [enter] to exit.");
